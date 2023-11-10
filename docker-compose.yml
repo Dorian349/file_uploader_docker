@@ -9,7 +9,7 @@ services:
     volumes:
       - project-data:/data/db
     ports:
-      - 5432:5432
+      - 27018:27017 # Ouverture du port uniquement à des fins de debug/accès sur la machine utilisateur.
     networks: 
       - node-network
 
