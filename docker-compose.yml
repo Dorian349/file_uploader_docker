@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  project-mongo:
+    image: "mongo"
+    container_name: project-mongodb
+    volumes:
+      - project-data:/data/db
+    ports:
+      - 5432:5432
+    environment:
+      - MONGO_DB=ProjectFiles
+      - MONGO_USER=root
+      - MONGO_PASSWORD=example
+
+  project-back:
+    build: ./project-back
+    container_name: project-back
+    environment:
+      - DB_SERVER=project-mongo
+      - MONGO_DB=ProjectFiles
+      - MONGO_USER=root
+      - MONGO_PASSWORD=example
+    ports:
+      - 8080:8080
+    links:
+      - project-mongo
+
+  project-front:
+    build: ./project-front
+    container_name: project-front
+    ports:
+      - 4200:80
+    links:
+      - project-back
+
+
+volumes:
+  project-data:
