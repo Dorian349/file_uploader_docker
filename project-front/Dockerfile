@@ -1,12 +1,6 @@
 ### STAGE 1: Build ###
-FROM node:20.9-alpine AS build
+FROM node:alpine AS build
 WORKDIR /usr/src/app
 COPY package.json ./
 RUN npm install
 COPY . .
-
-### STAGE 2: Run ###
-FROM nginx:1.24.0-alpine
-COPY default.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /usr/ /usr/share/nginx/html
-EXPOSE 80

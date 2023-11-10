@@ -5,6 +5,8 @@ var fs  = require('fs');
 var app = express();
 app.set('view engine', 'ejs');
 
+console.log("FRONT STARTED");
+
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
@@ -34,4 +36,4 @@ app.post('/upload', function (req, res, next) {
     });
 })
 
-app.listen(3000);
+app.listen(5000);

@@ -4,36 +4,67 @@ services:
   project-mongo:
     image: "mongo"
     container_name: project-mongodb
+    restart: always
+    tty: true
     volumes:
       - project-data:/data/db
     ports:
       - 5432:5432
-    environment:
-      - MONGO_DB=ProjectFiles
-      - MONGO_USER=root
-      - MONGO_PASSWORD=example
+    networks: 
+      - node-network
 
   project-back:
-    build: ./project-back
+    hostname: project-back
+    build:
+      context: project-back
     container_name: project-back
+    restart: always
+    tty: true
     environment:
       - DB_SERVER=project-mongo
-      - MONGO_DB=ProjectFiles
-      - MONGO_USER=root
-      - MONGO_PASSWORD=example
     ports:
-      - 8080:8080
+      - 20:6000
     links:
       - project-mongo
+    networks: 
+      - node-network
+    command: npm start
+    depends_on:
+       - project-mongo
 
   project-front:
-    build: ./project-front
+    hostname: project-front
+    build:
+      context: project-front
     container_name: project-front
+    restart: always
+    tty: true
     ports:
-      - 4200:80
+      - 21:5000
     links:
       - project-back
+    networks: 
+      - node-network
+    command: npm start
+    depends_on:
+       - project-mongo
 
+  nginx:
+    build: 
+      context: nginx
+    container_name: nginx
+    restart: always
+    tty: true
+    ports: 
+      - "3000:3000"
+    networks: 
+      - node-network
+    depends_on:
+    - project-front
+    - project-back
+
+networks: 
+  node-network:
 
 volumes:
   project-data:
