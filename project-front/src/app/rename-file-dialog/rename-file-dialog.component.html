@@ -1,0 +1,7 @@
+<h2>Renommer le fichier</h2>
+<form (ngSubmit)="onRename()">
+  <label for="newFilename">Nouveau nom :</label>
+  <input type="text" id="newFilename" [(ngModel)]="newFilename" required>
+  <button type="submit">Renommer</button>
+  <button type="button" (click)="onCancel()">Annuler</button>
+</form>

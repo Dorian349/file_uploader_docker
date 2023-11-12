@@ -1,0 +1,46 @@
+<body>
+    <div class="page-container">
+        <div class="header">
+            <h2>Your Title</h2>
+        </div>
+        <div class="white-box">
+            <div class="file-buttons">
+                <input type="file" (change)="onFileSelected($event)" id="fileInput">
+                <button (click)="loadFiles()">Refresh</button>
+            </div>
+            <div class="scrollable-content">
+                <div *ngFor="let file of files" class="file-item">
+                    <span>{{ file.name }}</span>
+                    <div class="file-item-icons">
+                        <button onclick="editFile(file.id)"><i class="fas fa-edit"></i></button>
+                        <button onclick="downloadFile(file.id)"><i class="fas fa-download"></i></button>
+                        <button onclick="removeFile(file.id)"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="files.length == 0">Aucun fichier</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function uploadFile() {
+            // Placeholder for file upload functionality (JavaScript or server-side processing)
+            alert('File upload functionality goes here.');
+        }
+
+        function editFile() {
+            // Placeholder for file edit functionality
+            alert('Edit file functionality goes here.');
+        }
+
+        function downloadFile() {
+            // Placeholder for file download functionality
+            alert('Download file functionality goes here.');
+        }
+
+        function removeFile() {
+            // Placeholder for file remove functionality
+            alert('Remove file functionality goes here.');
+        }
+    </script>
+</body>

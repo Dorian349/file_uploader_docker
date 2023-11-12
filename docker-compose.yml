@@ -30,24 +30,44 @@ services:
       - node-network
     command: npm start
     depends_on:
-       - project-mongo
+      - project-mongo
+    volumes:
+      - project-files:/home/files
 
-  project-front:
-    hostname: project-front
+  project-front1:
+    hostname: project-front1
     build:
       context: project-front
-    container_name: project-front
+    container_name: project-front1
     restart: always
     tty: true
     ports:
-      - 21:5000
+      - 4200:4200
     links:
       - project-back
     networks: 
       - node-network
     command: npm start
     depends_on:
-       - project-mongo
+      - project-mongo
+
+  # Front 2 pour le load balancer.
+  project-front2:
+    hostname: project-front2
+    build:
+      context: project-front
+    container_name: project-front2
+    restart: always
+    tty: true
+    ports:
+      - 4201:4200
+    links:
+      - project-back
+    networks: 
+      - node-network
+    command: npm start
+    depends_on:
+      - project-mongo
 
   nginx:
     build: 
@@ -60,7 +80,8 @@ services:
     networks: 
       - node-network
     depends_on:
-    - project-front
+    - project-front1
+    - project-front2
     - project-back
 
 networks: 
@@ -68,3 +89,4 @@ networks:
 
 volumes:
   project-data:
+  project-files:

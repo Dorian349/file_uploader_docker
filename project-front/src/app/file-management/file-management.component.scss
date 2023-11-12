@@ -1,0 +1,64 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #87CEEB, #D3D3D3); /* Gradient background color from light blue to light gray */
+    color: #000000; /* Text color */
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Set minimum height to 100% viewport height */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.page-container {
+    max-width: 85%; /* Set maximum width for responsiveness */
+    width: 100%; /* Ensure the box takes up the full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.white-box {
+    background-color: #ffffff; /* Background color of the white box */
+    padding: 20px; /* Adjusted padding for the white box (20px top/bottom, 20px left/right) */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow for a subtle effect */
+    overflow: hidden; /* Hide overflow content */
+}
+
+.file-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.scrollable-content {
+    max-height: 200px; /* Set the maximum height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd; /* Clean border for each item */
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.file-item-icons {
+    display: flex;
+}
+
+.file-item-icons button {
+    margin-left: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
