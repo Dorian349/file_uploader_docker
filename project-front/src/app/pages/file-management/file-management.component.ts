@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FileService } from '../shared/services/file.service';
-import { DialogService } from '../shared/services/dialog.service';
+import { FileService } from '../../shared/services/file.service';
+import { DialogService } from '../../shared/services/dialog.service';
 
 @Component({
   selector: 'app-file-management',

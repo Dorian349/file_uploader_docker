@@ -29,7 +29,7 @@ sudo docker-compose down -v
 
 ## Structure du projet
 
-La stack est composée de 4 services :
+Le projet est composé de 4 services :
 
 ### frontend :
 
