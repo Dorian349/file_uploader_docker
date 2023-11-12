@@ -11,6 +11,7 @@ export class FileManagementComponent {
   files: any[] = [];
 
   constructor(private fileService: FileService, private dialogService: DialogService) {}
+  
 
   ngOnInit(): void {
     this.loadFiles();
@@ -55,9 +56,16 @@ export class FileManagementComponent {
     });
   }
 
-  downloadFile(fileId: number): void {
+  downloadFile(fileId: number, filename: string): void {
 
-    window.open(`${this.fileService.apiUrl}/file/download/${fileId}`, "_blank");
+    this.fileService.download(fileId).subscribe(
+      (response) => {
+        this.fileService.saveAsFile(response, filename);
+      },
+      (error) => {
+        console.error('Erreur lors du téléchargement du fichier', error);
+      }
+    );
   }
 
   onFileSelected(event: any): void {

@@ -6,9 +6,27 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FileService {
-  public apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
+
+  download(fileId: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/file/download/${fileId}`, { responseType: 'blob' });
+  }
+
+  saveAsFile(blob: Blob, filename: string): void {
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+
+    document.body.appendChild(a);
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  }
 
   removeFile(fileId: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/file/remove/${fileId}`);

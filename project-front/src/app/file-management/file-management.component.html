@@ -13,7 +13,7 @@
                     <span>{{ file.name }}</span>
                     <div class="file-item-icons">
                         <button (click)="onRenameFile(file.id)"><i class="fas fa-edit"></i></button>
-                        <button (click)="downloadFile(file.id)"><i class="fas fa-download"></i></button>
+                        <button (click)="downloadFile(file.id, file.name)"><i class="fas fa-download"></i></button>
                         <button (click)="onRemoveFile(file.id)"><i class="fas fa-trash-alt"></i></button>
                     </div>
                 </div>

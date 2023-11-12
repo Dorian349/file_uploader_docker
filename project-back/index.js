@@ -75,12 +75,7 @@ app.get('/file/download/:fileId', async (req, res) => {
     }
 
     const filePath = fileInfo.path;
-    res.download(`${filePath}`, path.basename(`${filePath}`), (err) => {
-      if (err) {
-        console.error('Erreur lors du téléchargement du fichier :', err);
-        res.status(500).send('Erreur lors du téléchargement du fichier.');
-      }
-    });
+    res.sendFile(`${filePath}`);
   } catch (err) {
     res.status(500).json({ error: 'Erreur lors de la recherche du fichier dans la base de données' });
   }
