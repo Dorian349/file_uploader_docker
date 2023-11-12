@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { RenameFileDialogComponent } from '../../rename-file-dialog/rename-file-dialog.component';
-import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
+import { RenameFileDialogComponent } from '../../pages/rename-file-dialog/rename-file-dialog.component';
+import { ConfirmationDialogComponent } from '../../pages/confirmation-dialog/confirmation-dialog.component';
 
 @Injectable({
   providedIn: 'root',
