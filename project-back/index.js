@@ -4,6 +4,7 @@ const multer = require('multer');
 const app = express();
 const port = 6000;
 const fs = require('fs');
+const path = require('path');
 
 app.use(express.json());
 
@@ -128,6 +129,7 @@ app.put('/file/rename/:fileId', async (req, res) => {
 
     res.json({ response: 'Nom du fichier modifié avec succès' });
   } catch (err) {
+    console.log(err)
     res.status(500).json({ error: 'Erreur lors de la modification du nom du fichier' });
   }
 });

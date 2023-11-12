@@ -1,7 +1,13 @@
-<h2>Renommer le fichier</h2>
-<form (ngSubmit)="onRename()">
-  <label for="newFilename">Nouveau nom :</label>
-  <input type="text" id="newFilename" [(ngModel)]="newFilename" required>
-  <button type="submit">Renommer</button>
-  <button type="button" (click)="onCancel()">Annuler</button>
-</form>
+<div class="dialog-container">
+  <h2 class="dialog-title">Renommer le fichier</h2>
+  <form (ngSubmit)="onRename()" class="dialog-form">
+    <div class="form-group">
+      <label for="newFilename">Nouveau nom :</label>
+      <input type="text" name="newFilename" id="newFilename" [(ngModel)]="newFilename" class="form-control" required>
+    </div>
+    <div class="button-group">
+      <button type="submit" class="btn btn-primary">Renommer</button>
+      <button type="button" (click)="onCancel()" class="btn btn-secondary">Annuler</button>
+    </div>
+  </form>
+</div>

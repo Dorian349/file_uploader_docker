@@ -12,9 +12,9 @@
                 <div *ngFor="let file of files" class="file-item">
                     <span>{{ file.name }}</span>
                     <div class="file-item-icons">
-                        <button onclick="editFile(file.id)"><i class="fas fa-edit"></i></button>
-                        <button onclick="downloadFile(file.id)"><i class="fas fa-download"></i></button>
-                        <button onclick="removeFile(file.id)"><i class="fas fa-trash-alt"></i></button>
+                        <button (click)="onRenameFile(file.id)"><i class="fas fa-edit"></i></button>
+                        <button (click)="downloadFile(file.id)"><i class="fas fa-download"></i></button>
+                        <button (click)="onRemoveFile(file.id)"><i class="fas fa-trash-alt"></i></button>
                     </div>
                 </div>
                 <div *ngIf="files.length == 0">Aucun fichier</div>
