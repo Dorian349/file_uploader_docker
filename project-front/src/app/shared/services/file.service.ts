@@ -6,13 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FileService {
-  private apiUrl = 'http://localhost:3000/api';
+  public apiUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
-
-  download(fileId: number): Observable<Blob> {
-    return this.http.get(`${this.apiUrl}/file/download/${fileId}`, { responseType: 'blob' });
-  }
 
   removeFile(fileId: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/file/remove/${fileId}`);

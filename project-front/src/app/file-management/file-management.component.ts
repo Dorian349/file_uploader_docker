@@ -57,15 +57,7 @@ export class FileManagementComponent {
 
   downloadFile(fileId: number): void {
 
-    this.fileService.download(fileId).subscribe(
-      response => {
-        console.log('Fichier téléchargé avec succès', response);
-        this.loadFiles();
-      },
-      error => {
-        console.error('Erreur lors du téléchargement du fichier', error);
-      }
-    );
+    window.open(`${this.fileService.apiUrl}/file/download/${fileId}`, "_blank");
   }
 
   onFileSelected(event: any): void {
